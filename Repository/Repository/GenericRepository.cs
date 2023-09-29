@@ -52,9 +52,10 @@ namespace E_Commerce.Repository.Repository
 
         public virtual  void Update(TEntity entity)
         {
-             _context.Set<TEntity>().Update(entity);
+            _context.Set<TEntity>().Update(entity);
+
         }
-        public async Task<IEnumerable<TEntity>> GetAllWithInclude(Expression<Func<TEntity, bool>> predicate = null, string include)
+        public async Task<IEnumerable<TEntity>> GetAllWithInclude( string include,Expression<Func<TEntity, bool>> predicate = null)
         {
 
             return await _context.Set<TEntity>().Where(predicate).Include(include).ToListAsync();

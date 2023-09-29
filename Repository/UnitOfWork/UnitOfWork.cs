@@ -5,30 +5,30 @@ using Models.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Repository.UnitOfWork
+namespace E_Commerce.Repository.Unit
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DataContext _context;
         private bool disposedValue;
-        private GenericRepository<User> _userRepository;
-        private GenericRepository<Admin> _adminRepository;
-        private GenericRepository<Customer> _customerRepository;
-        private GenericRepository<Category> _categoryRepository;
-        private GenericRepository<Order> _orderRepository;
-        private GenericRepository<OrderDetails> _orderDetailsRepository;
-        private GenericRepository<Product> _productRepository;
+        public GenericRepository<User> userRepository;
+        public GenericRepository<Admin> adminRepository;
+        public GenericRepository<Customer> customerRepository;
+        public GenericRepository<Category> categoryRepository;
+        public GenericRepository<Order> orderRepository;
+        public GenericRepository<OrderDetails> orderDetailsRepository;
+        public GenericRepository<Product> productRepository;
 
         public UnitOfWork(DataContext context)
         {
             _context = context;
-            _userRepository = new GenericRepository<User>(_context);
-            _adminRepository = new GenericRepository<Admin>(_context);
-            _customerRepository = new GenericRepository<Customer>(_context);
-            _categoryRepository = new GenericRepository<Category>(_context);
-            _orderRepository = new GenericRepository<Order>(_context);
-            _orderDetailsRepository = new GenericRepository<OrderDetails>(_context);
-            _productRepository = new GenericRepository<Product>(_context);
+            userRepository = new GenericRepository<User>(_context);
+            adminRepository = new GenericRepository<Admin>(_context);
+            customerRepository = new GenericRepository<Customer>(_context);
+            categoryRepository = new GenericRepository<Category>(_context);
+            orderRepository = new GenericRepository<Order>(_context);
+            orderDetailsRepository = new GenericRepository<OrderDetails>(_context);
+            productRepository = new GenericRepository<Product>(_context);
         }
 
 

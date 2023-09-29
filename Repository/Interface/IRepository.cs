@@ -17,7 +17,7 @@ namespace E_Commerce.Repository.Interface
         void Update(TEntity entity);
         void Delete(TEntity entity);
         void Attach(TEntity entity);
-        Task<IEnumerable<TEntity>> GetAllWithInclude(Expression<Func<TEntity, bool>> predicate, string include);
+        Task<IEnumerable<TEntity>> GetAllWithInclude(string include,Expression<Func<TEntity, bool>> predicate);
 
     }
 }

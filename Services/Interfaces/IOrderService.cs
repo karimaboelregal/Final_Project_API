@@ -11,5 +11,14 @@ namespace E_Commerce.Repository.Interface
 {
     public interface IOrderService
     {
+        Task<List<Order>> GetOrdersList();
+
+        Task<Order> GetOrder(Guid id);
+
+        Task<Order> UpdateOrder(Order order);
+
+        Task<Order> AddOrder(Order order);
+
+        void DeleteCategory(Order order);
     }
 }

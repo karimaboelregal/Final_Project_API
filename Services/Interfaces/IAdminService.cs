@@ -10,6 +10,14 @@ namespace E_Commerce.Repository.Interface
 {
     public interface IAdminService
     {
+        Task<List<Admin>> GetAdminList();
 
+        Task<Admin> GetAdmin(Guid id);
+
+        Task<Admin> UpdateAdmin(Admin admin);
+
+        Task<Admin> AddAdmin(Admin admin);
+
+        void DeleteAdmin(Admin admin);
     }
 }
