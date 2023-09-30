@@ -31,6 +31,7 @@ namespace Web_API.Controllers
 
         // GET: api/Categories
         [HttpGet]
+        [Route("getcategories")]
         public async Task<ActionResult<List<Category>>> GetCategories()
         {
             var pro = await _categoryservice.GetCategoryList();

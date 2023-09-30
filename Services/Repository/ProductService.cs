@@ -23,7 +23,7 @@ namespace E_Commerce.Repository.Repository
         }
         public async Task<List<Product>> GetProductList()
         {
-            List<Product> prods = (List<Product>)await unitOfWork.productRepository.GetAll();
+            List<Product> prods = (List<Product>)await unitOfWork.productRepository.GetAllWithInclude("Category");
             return prods;
         }
         public async Task<List<Product>> GetProductsFromCategory(string id)
@@ -48,7 +48,7 @@ namespace E_Commerce.Repository.Repository
 
         public async Task<Product> AddProduct(Product product)
         {
-            unitOfWork.productRepository.Add(product);
+            await unitOfWork.productRepository.Add(product);
             unitOfWork.SaveChanges();
 
             return product;

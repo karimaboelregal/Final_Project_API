@@ -57,7 +57,10 @@ namespace E_Commerce.Repository.Repository
         }
         public async Task<IEnumerable<TEntity>> GetAllWithInclude( string include,Expression<Func<TEntity, bool>> predicate = null)
         {
-
+            if (predicate == null)
+            {
+                return await _context.Set<TEntity>().Include(include).ToListAsync();
+            }
             return await _context.Set<TEntity>().Where(predicate).Include(include).ToListAsync();
         }
 

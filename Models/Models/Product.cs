@@ -12,7 +12,7 @@ namespace Models.Models
         public string NameAr { get; set; }
         public decimal UnitPrice { get; set; }
         public int StockQuantity { get; set; }
-        //public string Image { get; set; }
+        public string Image { get; set; }
         public Guid CategoryId { get; set; }
         public virtual Category Category { get; set; }
     }

@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using E_Commerce.Data.Context;
+using System.Web.Http.Cors;
 using Models.Models;
 using E_Commerce.Repository.Interface;
 using Web_API.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace Web_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [Microsoft.AspNetCore.Cors.EnableCors()]
     public class ProductsController : ControllerBase
     {
    
@@ -29,6 +32,7 @@ namespace Web_API.Controllers
 
         // GET: api/Products
         [HttpGet]
+        [Route("getproducts")]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
 
@@ -64,6 +68,7 @@ namespace Web_API.Controllers
             p.NameAr = product.NameAr;
             p.UnitPrice = product.UnitPrice;
             p.StockQuantity = product.StockQuantity;
+            p.Image = product.Image;
             _productservice.UpdateProduct(p);
 
            return Ok();
@@ -74,11 +79,11 @@ namespace Web_API.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(ProductAPIModel product)
         {
-            Product p = new() {NameAr = product.NameAr,NameEn= product.NameEn, CategoryId=product.CategoryId,UnitPrice=product.UnitPrice ,StockQuantity = product.StockQuantity,CreatedOn=DateTime.Now};    
-           _productservice.AddProduct(p);   
+            Product p = new() {NameAr = product.NameAr,NameEn= product.NameEn, Image = product.Image,CategoryId=product.CategoryId,UnitPrice=product.UnitPrice ,StockQuantity = product.StockQuantity,CreatedOn=DateTime.Now};    
+           Product oo = await _productservice.AddProduct(p);   
          
 
-            return Ok();
+            return Ok(oo);
         }
 
         // DELETE: api/Products/5

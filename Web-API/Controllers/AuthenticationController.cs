@@ -26,6 +26,8 @@ namespace Web_API.Controllers
         }
 
         [HttpPost]
+        [Route("register")]
+
         public async Task<IActionResult> Register(RegisterUser user)
 
         {
